@@ -3,11 +3,83 @@
   <head>
     <meta charset="utf-8">
     <title>My first three.js app</title>
-    <style>
-      body { margin: 0; }
-    </style>
   </head>
   <body>
+    <canvas id="bg"></canvas>
+
+    <main>
+      <header>
+        <h1><b>Hi, <br>I'm Joanna!</b></h1>
+        <p> Welcome to my site! </p>
+      </header>
+
+      <section>
+        <h2>Here are some random fun facts about me</h2>
+        <p>1. I like to daydream.</p>
+        <p>2. I like to eat cheese.</p>
+        <p>3. I like pokemon and anime.</p>
+        <h1>Website Info</h1>
+        <h2>Space</h2>
+        <p>This starry background is populated by 500 randomly generated stars to simulate the night sky :&#41; </p>
+        <h2>Orange Tube Thing</h2>
+        <p> Illuminated with pointer light and rotated with an animation loop</p>
+        <h2>Other Models</h2>
+        <p> Table of food, plants, and pokeball rotate as you scroll!</p>
+        <p>But Pachirisu will always be looking at you :&#41;</p>
+      </section>
+
+      <blockquote>
+        <p>wow such a cool quote <br> - yours truly </p>
+      </blockquote>
+
+      <section>
+        <h2>Roblox Experience</h2>
+        <h3>Pokemon Brick Bronze</h3> 
+        <p><i>2017 - until it got copyright striked</i></p>
+        <p>Leveraged self-control to dedicate 6 hours running around grass in hopes of catching an event pokemon.</p>
+        <p>Attempted to trade for shinies at a discount to generate alpha.</p>
+        <h3>Tower of Hell</h3> 
+        <p><i>Covid start - Covid end</i></p>
+        <p>Exhibited self-initiative by studiously observing TOH YTers to get better.</p>
+        <p>Beat a couple of towers and flexed on the server.</p>
+        <h3>Natural Disaster Survival</h3>
+        <p><i>2017 - whenever I last played</i></p>
+        <p>Spent 2% of time finding a strategic location and 98% waiting for disaster to end.</p>
+        
+        <h2>Fav Roblox Event: Egg Hunt</h2>
+        <h3>The Great Yolktales</h3> 
+        <p><i>2018</i></p>
+        <p>By far the best egg hunt I ever did</p>
+        <p>Also the last real egg hunt</p>
+        <p>Got me so obsessed I even dreamed about it</p>
+        <p>Many stressful, but rewarding, hours spent here</p>
+        <h3>Scrambled in Time</h3> 
+        <p><i>2019</i></p>
+        <p>2018 had set such a high bar, it made 2019's flimsily made event feel even worse</p>
+        <p>No longer were the egg hunts centralized in one game, but now split into many others</p>
+        <p>Little did I know the 2018 egg hunt format would never occur again</p>
+        <h3>Agents of E.G.G.</h3>
+        <p><i>2020</i></p>
+        <p>Similar to 2019. I was disappointed but hoped for better next year</p>
+        <p>I had no idea this was going to be the last egg hunt.</p>
+        <h3>Metaverse Champions</h3>
+        <p><i>2021</i></p>
+        <p>Fake replacement aaaaa</p>
+        <p>Spent hours grinding those boxes to unlock the very last egg ...</p>
+        <p>... the Tiny Egg of Nonexistence</p>
+        <p>Roblox even added a mini temple to honour all the egg hunts over the years</p>
+      </section>
+      <div  class="button-container">
+      <button onclick="scrollToTop()">Read again because I'm such a poet</button>
+    </div>
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smoothly scroll to the top
+  }
+</script>
+    </main>
+
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>

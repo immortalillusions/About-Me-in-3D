@@ -1,0 +1,51 @@
+/* for background */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+main {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 columns */
+}
+
+header{
+    grid-column: 2/span 3; /* start at 2nd column and span 5 columns */
+    padding: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    background: #00000034 ; /* semi-transparent black */
+}
+
+section{
+    grid-column: 2/span 3; /* start at 2nd column and end at 8 */
+    padding: 1rem;
+    font-size: 1.25rem;
+    background: rgba(255, 255, 255, 0.607)
+}
+
+blockquote {
+    grid-column: 2/span 3;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.607)
+}
+
+h1 {
+    font-size: 2.8rem; /* Adjust the size as needed */
+}
+
+.button-container {
+    grid-column: 2/span 3;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.607);
+    padding: 1rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem; /* Add padding to the button */
+    font-size: 1rem; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }

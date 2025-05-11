@@ -38,12 +38,19 @@ pointLight2.intensity = 5; // same intensity as the first light
 scene.add(pointLight2); // add the second point light to the scene
 const lightHelper2 = new THREE.PointLightHelper(pointLight2, 1); // add light helper to see where the light is coming from
 
+const pointLight3 = new THREE.PointLight(0xffffff); // white light
+pointLight3.decay = 0; // same decay as the first light
+pointLight3.position.set(-5, -50, 10); // set a different position
+pointLight3.intensity = 5; // same intensity as the first light
+scene.add(pointLight3); // add the second point light to the scene
+const lightHelper3 = new THREE.PointLightHelper(pointLight2, 1); // add light helper to see where the light is coming from
+
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // white light
 scene.add(ambientLight); // lights up the entire thing
 
 const lightHelper = new THREE.PointLightHelper(pointLight, 1); // add light helper to see where the light is coming from
 const gridHelper = new THREE.GridHelper(200, 50); // add grid helper to see where the ground is
-scene.add(lightHelper, lightHelper2, gridHelper); 
+scene.add(lightHelper, lightHelper2, lightHelper3, gridHelper); 
 
 // listens to dom events on the mouse and update camera position accordingly
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -91,6 +98,8 @@ scene.add(ball);
 // GLB model
 let pottedPlant;
 let table;
+let boat;
+let castle;
 const loader = new GLTFLoader(); // create loader
 // Load a glTF resource
 // happens asynchronously so can't edit position outside of this function
@@ -103,27 +112,7 @@ loader.load(
 		pottedPlant.position.set(-5, -25, 2); // set position of potted plant
     pottedPlant.scale.set(4, 4, 4); // Scale the model to 2x its original size
     scene.add( gltf.scene );
-
-    // these do nothing
-		gltf.animations; // Array<THREE.AnimationClip>
-		gltf.scene; // THREE.Group
-		gltf.scenes; // Array<THREE.Group>
-		gltf.cameras; // Array<THREE.Camera>
-		gltf.asset; // Object
-
 	},
-	// called while loading is progressing
-	function ( xhr ) {
-
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-	},
-	// called when loading has errors
-	function ( error ) {
-
-		console.log( 'An error happened' );
-
-	}
 );
 
 loader.load(
@@ -131,34 +120,39 @@ loader.load(
 	'models/Table with food.glb',
 	// called when the resource is loaded
 	function ( gltf ) {
-    table = gltf.scene; // set potted plant to gltf scene
-		table.position.set(-5, -15, 15); // set position of potted plant
+    table = gltf.scene; 
+		table.position.set(-5, -15, 15);
     table.rotation.set(3.8*Math.PI/4, Math.PI/2, Math.PI/3); // Rotate the table around the Y-axis
     table.scale.set(4, 4, 4); // Scale the model to 2x its original size
     scene.add( gltf.scene );
-
-    // these do nothing
-		gltf.animations; // Array<THREE.AnimationClip>
-		gltf.scene; // THREE.Group
-		gltf.scenes; // Array<THREE.Group>
-		gltf.cameras; // Array<THREE.Camera>
-		gltf.asset; // Object
-
 	},
-	// called while loading is progressing
-	function ( xhr ) {
-
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-	},
-	// called when loading has errors
-	function ( error ) {
-
-		console.log( 'An error happened' );
-
-	}
 );
 
+loader.load(
+	// resource URL
+	'models/viking_longboat.glb',
+	// called when the resource is loaded
+	function ( gltf ) {
+    boat = gltf.scene; 
+		boat.position.set(-5, -43, 10);
+    boat.rotation.set(Math.PI/4, Math.PI/4, Math.PI/3); // Rotate the boat around the Y-axis
+    boat.scale.set(4, 4, 4); // Scale the model to 4x its original size
+    scene.add( gltf.scene );
+
+	},
+);
+
+loader.load(
+  'models/monument_valley_level_design.glb',
+  function ( gltf ) {
+    castle = gltf.scene; 
+		castle.position.set(0, -37, 19);
+    castle.rotation.set(Math.PI/4, Math.PI/4, Math.PI/3); // Rotate the castle around the Y-axis
+    castle.scale.set(1/100, 1/100, 1/100); // Scale the model down
+    scene.add( gltf.scene );
+
+	},
+)
 
 function moveCamera(){
   // t is always negative (bc we scrolling down)
@@ -181,7 +175,6 @@ function moveCamera(){
   if (table){
     table.rotation.y = scrollProgress * Math.PI/2;
   }
-
 }
 
 document.body.onscroll = moveCamera; // called when user scrolls
@@ -192,6 +185,13 @@ function animate() {
   torus.rotation.x += 0.01; // rotate on x-axis
   torus.rotation.y += 0.005; // rotate on y-axis 
   torus.rotation.z += 0.01; // rotate on z-axis
+  if (boat){
+    const time = Date.now() * 0.002; // Use time to create a smooth oscillation
+    boat.rotation.y = Math.PI/4 + Math.sin(time) * (Math.PI / 8); // Rocking motion around Y-axis
+  }
+  if (castle) {
+    castle.rotation.x += 0.01;
+  }
   renderer.render( scene, camera );
 
 }

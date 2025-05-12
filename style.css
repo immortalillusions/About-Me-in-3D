@@ -37,6 +37,10 @@ h1 {
     font-size: 2.8rem; /* Adjust the size as needed */
 }
 
+.small-text {
+    font-size: 0.8rem; /* Adjust the size as needed */
+  }
+  
 .button-container {
     grid-column: 2/span 3;
     text-align: center;
@@ -47,10 +51,17 @@ h1 {
   button {
     padding: 0.5rem 1rem; /* Add padding to the button */
     font-size: 1rem; /* Adjust font size */
+    color: black;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
     cursor: pointer; /* Change cursor to pointer on hover */
   }
 
-  @media (max-width: 768px) { /* For mobile screens */
+  button:hover {
+    background: rgb(207, 207, 207);
+  }
+
+@media (max-width: 768px) { /* For smaller screens */
     header {
       grid-column: 2/span 4; /* Span 4 columns on smaller screens */
     }
@@ -62,5 +73,20 @@ h1 {
     }
     .button-container {
       grid-column: 2/span 4; /* Span 4 columns on smaller screens */
+    }
+}
+
+@media (max-width: 540px) { /* For phone screens */
+    header {
+      grid-column: 2/span 6; /* Span 4 columns on smaller screens */
+    }
+    section {
+      grid-column: 2/span 6; /* Span 4 columns on smaller screens */
+    }
+    blockquote {
+      grid-column: 2/span 6; /* Span 4 columns on smaller screens */
+    }
+    .button-container {
+      grid-column: 2/span 6; /* Span 4 columns on smaller screens */
     }
 }

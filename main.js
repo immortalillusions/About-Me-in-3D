@@ -10,7 +10,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'), // render background
 });
 renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( window.innerWidth, document.documentElement.clientHeight);
 
 camera.position.setZ(10); // set camera position
 camera.position.setX(-10);

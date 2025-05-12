@@ -67,15 +67,15 @@ function addStar(){
 Array(500).fill().forEach(addStar); // add 200 stars
 
 // in future can also pass callback function for loading static image
-const spaceTexture = new THREE.TextureLoader().load('space.jpeg'); // load space texture
+const spaceTexture = new THREE.TextureLoader().load('/space.jpeg'); // load space texture
 // ensure it is the correct brightness (same brightness as original)
 spaceTexture.colorSpace = THREE.SRGBColorSpace
 scene.background = spaceTexture; // set scene background to space texture
 
 // avatar
 
-const pokemonTexture = new THREE.TextureLoader().load('pokemon.png'); // load pokemon texture
-const normalTexture = new THREE.TextureLoader().load('NormalMap.jpg'); // for texture/depth
+const pokemonTexture = new THREE.TextureLoader().load('/pokemon.png'); // load pokemon texture
+const normalTexture = new THREE.TextureLoader().load('/NormalMap.jpg'); // for texture/depth
 const pokemon = new THREE.Mesh(
   new THREE.PlaneGeometry(10, 10), // create box geometry
   new THREE.MeshStandardMaterial({ map: pokemonTexture, normalMap: normalTexture }) // create material with texture
@@ -85,7 +85,7 @@ pokemon.position.x = 10; // set position of pokemon
 pokemon.lookAt(camera.position); // Make the plane face the camera
 scene.add(pokemon);
 
-const ballTexture = new THREE.TextureLoader().load('pokeball.jpeg'); // load pokeball texture
+const ballTexture = new THREE.TextureLoader().load('/pokeball.jpeg'); // load pokeball texture
 const ball = new THREE.Mesh(
   new THREE.SphereGeometry(2, 24, 24), // create sphere geometry
   new THREE.MeshStandardMaterial({ map: ballTexture }) // create material with texture
@@ -105,7 +105,7 @@ const loader = new GLTFLoader(); // create loader
 // happens asynchronously so can't edit position outside of this function
 loader.load(
 	// resource URL
-	'models/Pothos Plant Medium.glb',
+	'/models/Pothos Plant Medium.glb',
 	// called when the resource is loaded
 	function ( gltf ) {
     pottedPlant = gltf.scene; // set potted plant to gltf scene
@@ -117,7 +117,7 @@ loader.load(
 
 loader.load(
 	// resource URL
-	'models/Table with food.glb',
+	'/models/Table with food.glb',
 	// called when the resource is loaded
 	function ( gltf ) {
     table = gltf.scene; 
@@ -130,7 +130,7 @@ loader.load(
 
 loader.load(
 	// resource URL
-	'models/viking_longboat.glb',
+	'/models/viking_longboat.glb',
 	// called when the resource is loaded
 	function ( gltf ) {
     boat = gltf.scene; 
@@ -143,7 +143,7 @@ loader.load(
 );
 
 loader.load(
-  'models/monument_valley_level_design.glb',
+  '/models/monument_valley_level_design.glb',
   function ( gltf ) {
     castle = gltf.scene; 
 		castle.position.set(0, -37, 19);

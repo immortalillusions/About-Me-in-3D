@@ -12,7 +12,7 @@ main {
 }
 
 header{
-    grid-column: 2/span 3; /* start at 2nd column and span 5 columns */
+    grid-column: 2/span 3; /* start at 2nd column and span 3 columns */
     padding: 1rem;
     text-align: center;
     font-size: 2rem;
@@ -21,7 +21,7 @@ header{
 }
 
 section{
-    grid-column: 2/span 3; /* start at 2nd column and end at 8 */
+    grid-column: 2/span 3; /* start at 2nd column and end at 3 */
     padding: 1rem;
     font-size: 1.25rem;
     background: rgba(255, 255, 255, 0.607)
@@ -49,3 +49,18 @@ h1 {
     font-size: 1rem; /* Adjust font size */
     cursor: pointer; /* Change cursor to pointer on hover */
   }
+
+  @media (max-width: 768px) { /* For mobile screens */
+    header {
+      grid-column: 2/span 4; /* Span 4 columns on smaller screens */
+    }
+    section {
+      grid-column: 2/span 4; /* Span 4 columns on smaller screens */
+    }
+    blockquote {
+      grid-column: 2/span 4; /* Span 4 columns on smaller screens */
+    }
+    .button-container {
+      grid-column: 2/span 4; /* Span 4 columns on smaller screens */
+    }
+}

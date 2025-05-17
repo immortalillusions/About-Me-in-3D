@@ -10,7 +10,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'), // render background
 });
 renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, document.documentElement.clientHeight);
+renderer.setSize( window.innerWidth, window.innerHeight);
 
 camera.position.setZ(10); // set camera position
 camera.position.setX(-10);
@@ -178,6 +178,14 @@ function moveCamera(){
 }
 
 document.body.onscroll = moveCamera; // called when user scrolls
+
+// don't call this within animate bc it's expensive
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
 function animate() {
 
   requestAnimationFrame( animate );
